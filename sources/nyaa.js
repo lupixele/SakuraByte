@@ -71,16 +71,47 @@ export default {
     return items
   },
 
-  async single(options) {
+  async anime(options) {
     const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
     const titles = (options.titles || []).slice(0, 3)
+    let allResults = []
     
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
         const results = await this.searchNyaa(query)
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
-        if (valid.length > 0) return valid
+        if (valid.length > 0) {
+          allResults = allResults.concat(valid)
+          break // Found good episode results, stop trying other titles
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    
+    // Also try to find batches for the whole season
+    for (const title of titles) {
+      try {
+        const results = await this.searchNyaa(`${title} batch`)
+        if (results.length > 0) {
+          allResults = allResults.concat(results)
+          break
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    return allResults
+  },
+
+  async movie(options) {
+    // For anime movies, just search the titles without episode numbers
+    const titles = (options.titles || []).slice(0, 3)
+    for (const title of titles) {
+      try {
+        const results = await this.searchNyaa(title)
+        if (results.length > 0) return results
       } catch (err) {
         continue
       }
@@ -88,17 +119,7 @@ export default {
     return []
   },
 
-  async batch(options) {
-    const titles = (options.titles || []).slice(0, 3)
-    
-    for (const title of titles) {
-      try {
-        const results = await this.searchNyaa(`${title} batch`)
-        if (results.length > 0) return results
-      } catch (err) {
-        continue
-      }
-    }
-    return []
+  async series(options) {
+    return this.anime(options)
   }
 }

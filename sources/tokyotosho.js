@@ -82,16 +82,45 @@ export default {
     return items
   },
 
-  async single(options) {
+  async anime(options) {
     const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
     const titles = (options.titles || []).slice(0, 3)
+    let allResults = []
     
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
         const results = await this.searchTokyoTosho(query)
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
-        if (valid.length > 0) return valid
+        if (valid.length > 0) {
+          allResults = allResults.concat(valid)
+          break
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    
+    for (const title of titles) {
+      try {
+        const results = await this.searchTokyoTosho(`${title} batch`)
+        if (results.length > 0) {
+          allResults = allResults.concat(results)
+          break
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    return allResults
+  },
+
+  async movie(options) {
+    const titles = (options.titles || []).slice(0, 3)
+    for (const title of titles) {
+      try {
+        const results = await this.searchTokyoTosho(title)
+        if (results.length > 0) return results
       } catch (err) {
         continue
       }
@@ -99,17 +128,7 @@ export default {
     return []
   },
 
-  async batch(options) {
-    const titles = (options.titles || []).slice(0, 3)
-    
-    for (const title of titles) {
-      try {
-        const results = await this.searchTokyoTosho(`${title} batch`)
-        if (results.length > 0) return results
-      } catch (err) {
-        continue
-      }
-    }
-    return []
+  async series(options) {
+    return this.anime(options)
   }
 }

@@ -1,0 +1,196 @@
+[
+  {
+    "id": "nyaa",
+    "name": "Nyaa.si",
+    "version": "1.0.0",
+    "main": "sources/nyaa.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["anime"],
+    "speed": "fast",
+    "accuracy": "high",
+    "description": "Primary anime tracker",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "nyaa.si",
+        "description": "Proxy domain if nyaa is blocked"
+      }
+    ]
+  },
+  {
+    "id": "anidex",
+    "name": "AniDex",
+    "version": "1.0.0",
+    "main": "sources/anidex.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["anime"],
+    "speed": "fast",
+    "accuracy": "medium",
+    "description": "Backup anime tracker",
+    "settings": []
+  },
+  {
+    "id": "tokyotosho",
+    "name": "TokyoTosho",
+    "version": "1.0.0",
+    "main": "sources/tokyotosho.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["anime"],
+    "speed": "moderate",
+    "accuracy": "medium",
+    "description": "Backup anime tracker",
+    "settings": []
+  },
+  {
+    "id": "piratebay",
+    "name": "The Pirate Bay",
+    "version": "1.0.0",
+    "main": "sources/piratebay.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie", "series"],
+    "speed": "moderate",
+    "accuracy": "medium",
+    "description": "General tracker for movies and western series",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "thepiratebay.org",
+        "description": "Proxy domain if TPB is blocked"
+      }
+    ]
+  },
+  {
+    "id": "yts",
+    "name": "YTS",
+    "version": "1.0.0",
+    "main": "sources/yts.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie"],
+    "speed": "fast",
+    "accuracy": "high",
+    "description": "High quality, small size movies",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "yts.mx",
+        "description": "Proxy domain if YTS is blocked"
+      }
+    ]
+  },
+  {
+    "id": "tamilmv",
+    "name": "1TamilMV",
+    "version": "1.0.0",
+    "main": "sources/tamilmv.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie", "series"],
+    "speed": "slow",
+    "accuracy": "high",
+    "description": "Premium regional Indian tracker (Tamil, Telugu, Malayalam)",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "1tamilmv.cards",
+        "description": "The current working domain for TamilMV"
+      }
+    ]
+  },
+  {
+    "id": "movierulz",
+    "name": "Movierulz",
+    "version": "1.0.0",
+    "main": "sources/movierulz.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie"],
+    "speed": "slow",
+    "accuracy": "medium",
+    "description": "General Indian tracker, heavily populated with Telugu/Hindi content",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "5movierulz.school",
+        "description": "The current working domain for Movierulz"
+      }
+    ]
+  },
+  {
+    "id": "1337x",
+    "name": "1337x",
+    "version": "1.0.0",
+    "main": "sources/1337x.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie", "series"],
+    "speed": "medium",
+    "accuracy": "medium",
+    "description": "General torrent tracker with a wide variety of movies and series",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "1337x.to",
+        "description": "The current working domain for 1337x"
+      }
+    ]
+  },
+  {
+    "id": "solidtorrents",
+    "name": "SolidTorrents",
+    "version": "1.0.0",
+    "main": "sources/solidtorrents.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie", "series"],
+    "speed": "fast",
+    "accuracy": "high",
+    "description": "Clean, fast, and very accurate torrent indexer via JSON API",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "solidtorrents.to",
+        "description": "The current working domain for SolidTorrents"
+      }
+    ]
+  },
+  {
+    "id": "btdigg",
+    "name": "BTDigg",
+    "version": "1.0.0",
+    "main": "sources/btdigg.js",
+    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "type": "torrent",
+    "contentTypes": ["movie", "series"],
+    "speed": "medium",
+    "accuracy": "high",
+    "description": "DHT search engine aggregator. Extremely resilient and finds rare, obscure, and regional content by crawling the DHT network directly.",
+    "settings": [
+      {
+        "key": "domain",
+        "label": "Custom Domain",
+        "type": "text",
+        "default": "btdig.com",
+        "description": "The current working domain for BTDigg"
+      }
+    ]
+  }
+]

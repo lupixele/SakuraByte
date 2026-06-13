@@ -1,13 +1,10 @@
 // AniDex extension for Hanami
 
-export default {
-  settings: {},
+export async function validate() {
+  return true
+}
 
-  async validate() {
-    return true
-  },
-
-  async searchAniDex(queryStr) {
+export async function searchAniDex(queryStr) {
     // AniDex actually has a JSON API for searching
     // 1 = Anime Sub
     const url = `https://anidex.info/api/?q=${encodeURIComponent(queryStr)}&id=1`
@@ -53,7 +50,7 @@ export default {
     return items
   },
 
-  async anime(options) {
+export async function anime(options) {
     const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
     const titles = (options.titles || []).slice(0, 3)
     let allResults = []
@@ -61,7 +58,7 @@ export default {
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
-        const results = await this.searchAniDex(query)
+        const results = await searchAniDex(query)
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
@@ -74,7 +71,7 @@ export default {
     
     for (const title of titles) {
       try {
-        const results = await this.searchAniDex(`${title} batch`)
+        const results = await searchAniDex(`${title} batch`)
         if (results.length > 0) {
           allResults = allResults.concat(results)
           break
@@ -86,11 +83,11 @@ export default {
     return allResults
   },
 
-  async movie(options) {
+export async function movie(options) {
     const titles = (options.titles || []).slice(0, 3)
     for (const title of titles) {
       try {
-        const results = await this.searchAniDex(title)
+        const results = await searchAniDex(title)
         if (results.length > 0) return results
       } catch (err) {
         continue
@@ -99,7 +96,6 @@ export default {
     return []
   },
 
-  async series(options) {
-    return this.anime(options)
-  }
+export async function series(options) {
+  return anime(options)
 }

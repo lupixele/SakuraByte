@@ -4,9 +4,11 @@
     "name": "Nyaa.si",
     "version": "1.0.0",
     "main": "sources/nyaa.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["anime"],
+    "contentTypes": [
+      "anime"
+    ],
     "speed": "fast",
     "accuracy": "high",
     "description": "Primary anime tracker",
@@ -25,9 +27,11 @@
     "name": "AniDex",
     "version": "1.0.0",
     "main": "sources/anidex.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["anime"],
+    "contentTypes": [
+      "anime"
+    ],
     "speed": "fast",
     "accuracy": "medium",
     "description": "Backup anime tracker",
@@ -38,9 +42,11 @@
     "name": "TokyoTosho",
     "version": "1.0.0",
     "main": "sources/tokyotosho.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["anime"],
+    "contentTypes": [
+      "anime"
+    ],
     "speed": "moderate",
     "accuracy": "medium",
     "description": "Backup anime tracker",
@@ -51,9 +57,12 @@
     "name": "The Pirate Bay",
     "version": "1.0.0",
     "main": "sources/piratebay.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie", "series"],
+    "contentTypes": [
+      "movie",
+      "series"
+    ],
     "speed": "moderate",
     "accuracy": "medium",
     "description": "General tracker for movies and western series",
@@ -72,9 +81,11 @@
     "name": "YTS",
     "version": "1.0.0",
     "main": "sources/yts.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie"],
+    "contentTypes": [
+      "movie"
+    ],
     "speed": "fast",
     "accuracy": "high",
     "description": "High quality, small size movies",
@@ -93,9 +104,12 @@
     "name": "1TamilMV",
     "version": "1.0.0",
     "main": "sources/tamilmv.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie", "series"],
+    "contentTypes": [
+      "movie",
+      "series"
+    ],
     "speed": "slow",
     "accuracy": "high",
     "description": "Premium regional Indian tracker (Tamil, Telugu, Malayalam)",
@@ -114,9 +128,11 @@
     "name": "Movierulz",
     "version": "1.0.0",
     "main": "sources/movierulz.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie"],
+    "contentTypes": [
+      "movie"
+    ],
     "speed": "slow",
     "accuracy": "medium",
     "description": "General Indian tracker, heavily populated with Telugu/Hindi content",
@@ -135,9 +151,12 @@
     "name": "1337x",
     "version": "1.0.0",
     "main": "sources/1337x.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie", "series"],
+    "contentTypes": [
+      "movie",
+      "series"
+    ],
     "speed": "medium",
     "accuracy": "medium",
     "description": "General torrent tracker with a wide variety of movies and series",
@@ -156,9 +175,12 @@
     "name": "SolidTorrents",
     "version": "1.0.0",
     "main": "sources/solidtorrents.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie", "series"],
+    "contentTypes": [
+      "movie",
+      "series"
+    ],
     "speed": "fast",
     "accuracy": "high",
     "description": "Clean, fast, and very accurate torrent indexer via JSON API",
@@ -177,9 +199,12 @@
     "name": "BTDigg",
     "version": "1.0.0",
     "main": "sources/btdigg.js",
-    "update": "extension://P:/Projects/Hanami/extensions/SakuraByte",
+    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
-    "contentTypes": ["movie", "series"],
+    "contentTypes": [
+      "movie",
+      "series"
+    ],
     "speed": "medium",
     "accuracy": "high",
     "description": "DHT search engine aggregator. Extremely resilient and finds rare, obscure, and regional content by crawling the DHT network directly.",

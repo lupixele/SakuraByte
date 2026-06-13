@@ -1,10 +1,13 @@
 // AniDex extension for Hanami
 
-export async function validate() {
-  return true
-}
+export default {
+  settings: {},
 
-export async function searchAniDex(queryStr) {
+  async validate() {
+    return true
+  },
+
+  async searchAniDex(queryStr) {
     // AniDex actually has a JSON API for searching
     // 1 = Anime Sub
     const url = `https://anidex.info/api/?q=${encodeURIComponent(queryStr)}&id=1`
@@ -50,7 +53,7 @@ export async function searchAniDex(queryStr) {
     return items
   },
 
-export async function anime(options) {
+  async anime(options) {
     const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
     const titles = (options.titles || []).slice(0, 3)
     let allResults = []
@@ -58,7 +61,7 @@ export async function anime(options) {
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
-        const results = await searchAniDex(query)
+        const results = await this.searchAniDex(query)
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
@@ -71,7 +74,7 @@ export async function anime(options) {
     
     for (const title of titles) {
       try {
-        const results = await searchAniDex(`${title} batch`)
+        const results = await this.searchAniDex(`${title} batch`)
         if (results.length > 0) {
           allResults = allResults.concat(results)
           break
@@ -83,11 +86,11 @@ export async function anime(options) {
     return allResults
   },
 
-export async function movie(options) {
+  async movie(options) {
     const titles = (options.titles || []).slice(0, 3)
     for (const title of titles) {
       try {
-        const results = await searchAniDex(title)
+        const results = await this.searchAniDex(title)
         if (results.length > 0) return results
       } catch (err) {
         continue
@@ -96,6 +99,7 @@ export async function movie(options) {
     return []
   },
 
-export async function series(options) {
-  return anime(options)
+  async series(options) {
+    return this.anime(options)
+  }
 }

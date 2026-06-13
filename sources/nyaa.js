@@ -12,21 +12,26 @@ function parseSizeToBytes(sizeStr) {
   return val
 }
 
-export async function validate() {
-  try {
-    const res = await fetch(`https://${this.settings?.domain || 'nyaa.si'}/`)
-    return res.ok
-  } catch {
-    return false
-  }
-}
+export default {
+  settings: {
+    domain: 'nyaa.si'
+  },
 
-export async function searchNyaa(queryStr, category = '1_2', domain = 'nyaa.si') {
-  // 1_2 is Anime - English-translated
-  const url = `https://${domain}/?f=0&c=${category}&q=${encodeURIComponent(queryStr)}&s=seeders&o=desc`
-  
-  // Nyaa doesn't have a JSON API, but the RSS feed is clean
-  const rssUrl = `https://${domain}/?page=rss&c=${category}&q=${encodeURIComponent(queryStr)}&s=seeders&o=desc`
+  async validate() {
+    try {
+      const res = await fetch(`https://${this.settings.domain}/`)
+      return res.ok
+    } catch {
+      return false
+    }
+  },
+
+  async searchNyaa(queryStr, category = '1_2') {
+    // 1_2 is Anime - English-translated
+    const url = `https://${this.settings.domain}/?f=0&c=${category}&q=${encodeURIComponent(queryStr)}&s=seeders&o=desc`
+    
+    // Nyaa doesn't have a JSON API, but the RSS feed is clean
+    const rssUrl = `https://${this.settings.domain}/?page=rss&c=${category}&q=${encodeURIComponent(queryStr)}&s=seeders&o=desc`
     
     const res = await fetch(rssUrl)
     if (!res.ok) throw new Error('Failed to fetch Nyaa')
@@ -66,17 +71,16 @@ export async function searchNyaa(queryStr, category = '1_2', domain = 'nyaa.si')
     return items
   },
 
-export async function anime(options) {
-  const domain = options.settings?.domain || 'nyaa.si'
-  const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
-  const titles = (options.titles || []).slice(0, 3)
-  let allResults = []
-  
-  for (const title of titles) {
-    const query = `${title} ${ep}`.trim()
-    try {
-      const results = await searchNyaa(query, '1_2', domain)
-      const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
+  async anime(options) {
+    const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
+    const titles = (options.titles || []).slice(0, 3)
+    let allResults = []
+    
+    for (const title of titles) {
+      const query = `${title} ${ep}`.trim()
+      try {
+        const results = await this.searchNyaa(query)
+        const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
           break // Found good episode results, stop trying other titles
@@ -89,7 +93,7 @@ export async function anime(options) {
     // Also try to find batches for the whole season
     for (const title of titles) {
       try {
-      const results = await searchNyaa(`${title} batch`, '1_2', domain)
+        const results = await this.searchNyaa(`${title} batch`)
         if (results.length > 0) {
           allResults = allResults.concat(results)
           break
@@ -101,14 +105,13 @@ export async function anime(options) {
     return allResults
   },
 
-export async function movie(options) {
-  const domain = options.settings?.domain || 'nyaa.si'
-  // For anime movies, just search the titles without episode numbers
-  const titles = (options.titles || []).slice(0, 3)
-  for (const title of titles) {
-    try {
-      const results = await searchNyaa(title, '1_2', domain)
-      if (results.length > 0) return results
+  async movie(options) {
+    // For anime movies, just search the titles without episode numbers
+    const titles = (options.titles || []).slice(0, 3)
+    for (const title of titles) {
+      try {
+        const results = await this.searchNyaa(title)
+        if (results.length > 0) return results
       } catch (err) {
         continue
       }
@@ -116,6 +119,7 @@ export async function movie(options) {
     return []
   },
 
-export async function series(options) {
-  return anime(options)
+  async series(options) {
+    return this.anime(options)
+  }
 }

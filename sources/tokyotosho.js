@@ -12,11 +12,14 @@ function parseSizeToBytes(sizeStr) {
   return val
 }
 
-export async function validate() {
-  return true
-}
+export default {
+  settings: {},
 
-export async function searchTokyoTosho(queryStr) {
+  async validate() {
+    return true
+  },
+
+  async searchTokyoTosho(queryStr) {
     // TokyoTosho RSS format
     // type 1 = Anime
     const rssUrl = `https://tokyotosho.info/rss.php?terms=${encodeURIComponent(queryStr)}&type=1&searchName=true&searchComment=true&size_min=&size_max=&username=`
@@ -79,7 +82,7 @@ export async function searchTokyoTosho(queryStr) {
     return items
   },
 
-export async function anime(options) {
+  async anime(options) {
     const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
     const titles = (options.titles || []).slice(0, 3)
     let allResults = []
@@ -87,7 +90,7 @@ export async function anime(options) {
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
-        const results = await searchTokyoTosho(query)
+        const results = await this.searchTokyoTosho(query)
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
@@ -100,7 +103,7 @@ export async function anime(options) {
     
     for (const title of titles) {
       try {
-        const results = await searchTokyoTosho(`${title} batch`)
+        const results = await this.searchTokyoTosho(`${title} batch`)
         if (results.length > 0) {
           allResults = allResults.concat(results)
           break
@@ -112,11 +115,11 @@ export async function anime(options) {
     return allResults
   },
 
-export async function movie(options) {
+  async movie(options) {
     const titles = (options.titles || []).slice(0, 3)
     for (const title of titles) {
       try {
-        const results = await searchTokyoTosho(title)
+        const results = await this.searchTokyoTosho(title)
         if (results.length > 0) return results
       } catch (err) {
         continue
@@ -125,6 +128,7 @@ export async function movie(options) {
     return []
   },
 
-export async function series(options) {
-  return anime(options)
+  async series(options) {
+    return this.anime(options)
+  }
 }

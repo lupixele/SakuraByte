@@ -3,8 +3,6 @@
     "id": "nyaa",
     "name": "Nyaa.si",
     "version": "1.0.0",
-    "main": "sources/nyaa.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "anime"
@@ -20,14 +18,13 @@
         "default": "nyaa.si",
         "description": "Proxy domain if nyaa is blocked"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/nyaa.js"
   },
   {
     "id": "anidex",
     "name": "AniDex",
     "version": "1.0.0",
-    "main": "sources/anidex.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "anime"
@@ -35,14 +32,13 @@
     "speed": "fast",
     "accuracy": "medium",
     "description": "Backup anime tracker",
-    "settings": []
+    "settings": [],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/anidex.js"
   },
   {
     "id": "tokyotosho",
     "name": "TokyoTosho",
     "version": "1.0.0",
-    "main": "sources/tokyotosho.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "anime"
@@ -50,14 +46,13 @@
     "speed": "moderate",
     "accuracy": "medium",
     "description": "Backup anime tracker",
-    "settings": []
+    "settings": [],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/tokyotosho.js"
   },
   {
     "id": "piratebay",
     "name": "The Pirate Bay",
     "version": "1.0.0",
-    "main": "sources/piratebay.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie",
@@ -74,14 +69,13 @@
         "default": "thepiratebay.org",
         "description": "Proxy domain if TPB is blocked"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/piratebay.js"
   },
   {
     "id": "yts",
     "name": "YTS",
     "version": "1.0.0",
-    "main": "sources/yts.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie"
@@ -97,14 +91,13 @@
         "default": "yts.mx",
         "description": "Proxy domain if YTS is blocked"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/yts.js"
   },
   {
     "id": "tamilmv",
     "name": "1TamilMV",
     "version": "1.0.0",
-    "main": "sources/tamilmv.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie",
@@ -121,14 +114,13 @@
         "default": "1tamilmv.cards",
         "description": "The current working domain for TamilMV"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/tamilmv.js"
   },
   {
     "id": "movierulz",
     "name": "Movierulz",
     "version": "1.0.0",
-    "main": "sources/movierulz.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie"
@@ -144,14 +136,13 @@
         "default": "5movierulz.school",
         "description": "The current working domain for Movierulz"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/movierulz.js"
   },
   {
     "id": "1337x",
     "name": "1337x",
     "version": "1.0.0",
-    "main": "sources/1337x.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie",
@@ -168,14 +159,13 @@
         "default": "1337x.to",
         "description": "The current working domain for 1337x"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/1337x.js"
   },
   {
     "id": "solidtorrents",
     "name": "SolidTorrents",
     "version": "1.0.0",
-    "main": "sources/solidtorrents.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie",
@@ -192,14 +182,13 @@
         "default": "solidtorrents.to",
         "description": "The current working domain for SolidTorrents"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/solidtorrents.js"
   },
   {
     "id": "btdigg",
     "name": "BTDigg",
     "version": "1.0.0",
-    "main": "sources/btdigg.js",
-    "update": "https://raw.githubusercontent.com/lupixele/SakuraByte/main",
     "type": "torrent",
     "contentTypes": [
       "movie",
@@ -216,6 +205,7 @@
         "default": "btdig.com",
         "description": "The current working domain for BTDigg"
       }
-    ]
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/btdigg.js"
   }
 ]

@@ -30,8 +30,14 @@ export default {
     }))
   },
 
-  async search(queryStr, useTorrent) {
-    const res = await fetch(`https://${this.settings.domain}/json?q=${encodeURIComponent(queryStr)}`)
+  async search(queryStr, useTorrent, filters = {}) {
+    let url = `https://${this.settings.domain}/json?`
+    const params = new URLSearchParams()
+    if (queryStr) params.append('q', queryStr)
+    if (filters.anidbEid) params.append('e', filters.anidbEid)
+    if (filters.anidbAid) params.append('a', filters.anidbAid)
+    
+    const res = await fetch(url + params.toString())
     const data = await res.json()
     return data.length ? this.map(data, false, useTorrent) : []
   },
@@ -41,10 +47,17 @@ export default {
     const titles = (options.titles || []).slice(0, 3)
     let allResults = []
 
+    if (options.anidbEid) {
+      try {
+        const results = await this.search('', this.settings.useTorrent, { anidbEid: options.anidbEid })
+        if (results.length > 0) return results
+      } catch (err) {}
+    }
+
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
-        const results = await this.search(query, this.settings.useTorrent)
+        const results = await this.search(query, this.settings.useTorrent, options.anidbAid ? { anidbAid: options.anidbAid } : {})
         const valid = results.filter(r => !/batch|complete|season/i.test(r.title))
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
@@ -56,9 +69,17 @@ export default {
     }
     
     if (allResults.length === 0) {
+      if (options.anidbAid) {
+        try {
+          const results = await this.search('', this.settings.useTorrent, { anidbAid: options.anidbAid })
+          const batch = results.filter(r => /batch|complete|season/i.test(r.title)).map(r => ({ ...r, type: 'batch' }))
+          if (batch.length > 0) return batch
+        } catch (err) {}
+      }
+
       for (const title of titles) {
         try {
-          const results = await this.search(`${title} batch`, this.settings.useTorrent)
+          const results = await this.search(`${title} batch`, this.settings.useTorrent, options.anidbAid ? { anidbAid: options.anidbAid } : {})
           if (results.length > 0) {
             allResults = allResults.concat(results.map(r => ({ ...r, type: 'batch' })))
             break

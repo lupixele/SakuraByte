@@ -14,8 +14,14 @@ export default {
     }
   },
 
-  async search(queryStr) {
-    const res = await fetch(`https://${this.settings.domain}/torrents?name=ilike.*${encodeURIComponent(queryStr)}*`)
+  async search(queryStr, filters = {}) {
+    let url = `https://${this.settings.domain}/torrents?`
+    const params = new URLSearchParams()
+    if (filters.anidbEid) params.append('eid', filters.anidbEid.toString())
+    else if (filters.anidbAid) params.append('aid', filters.anidbAid.toString())
+    else if (queryStr) params.append('name', `ilike.*${queryStr}*`)
+    
+    const res = await fetch(url + params.toString())
     if (!res.ok) return []
     const json = await res.json()
     if (!json || !Array.isArray(json)) return []
@@ -39,10 +45,17 @@ export default {
     const titles = (options.titles || []).slice(0, 3)
     let allResults = []
 
+    if (options.anidbEid) {
+      try {
+        const results = await this.search('', { anidbEid: options.anidbEid })
+        if (results.length > 0) return results
+      } catch (err) {}
+    }
+
     for (const title of titles) {
       const query = `${title} ${ep}`.trim()
       try {
-        const results = await this.search(query)
+        const results = await this.search(query, options.anidbAid ? { anidbAid: options.anidbAid } : {})
         const valid = results.filter(r => r.type !== 'batch')
         if (valid.length > 0) {
           allResults = allResults.concat(valid)
@@ -54,9 +67,17 @@ export default {
     }
     
     if (allResults.length === 0) {
+      if (options.anidbAid) {
+        try {
+          const results = await this.search('', { anidbAid: options.anidbAid })
+          const batch = results.filter(r => r.type === 'batch')
+          if (batch.length > 0) return batch
+        } catch (err) {}
+      }
+
       for (const title of titles) {
         try {
-          const results = await this.search(`${title} batch`)
+          const results = await this.search(`${title} batch`, options.anidbAid ? { anidbAid: options.anidbAid } : {})
           if (results.length > 0) {
             allResults = allResults.concat(results.filter(r => r.type === 'batch'))
             break

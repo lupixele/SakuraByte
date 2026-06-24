@@ -1,0 +1,89 @@
+// AniSearch extension for Hanami
+
+export default {
+  settings: {
+    domain: 'api.anisearch.org'
+  },
+
+  async validate() {
+    try {
+      const res = await fetch(`https://${this.settings.domain}/torrents?limit=1`)
+      return res.ok
+    } catch {
+      return false
+    }
+  },
+
+  async search(queryStr) {
+    const res = await fetch(`https://${this.settings.domain}/torrents?name=ilike.*${encodeURIComponent(queryStr)}*`)
+    if (!res.ok) return []
+    const json = await res.json()
+    if (!json || !Array.isArray(json)) return []
+
+    return json.map(entry => ({
+      title: entry.torrentName || entry.releaseName,
+      link: entry.torrentFileUrl,
+      seeders: 0,
+      leechers: 0,
+      downloads: 0,
+      hash: entry.infohash,
+      size: entry.length,
+      accuracy: 'medium',
+      type: /batch|complete|season/i.test(entry.torrentName || '') ? 'batch' : undefined,
+      date: new Date(entry.createdAt)
+    }))
+  },
+
+  async anime(options) {
+    const ep = options.episode ? options.episode.toString().padStart(2, '0') : ''
+    const titles = (options.titles || []).slice(0, 3)
+    let allResults = []
+
+    for (const title of titles) {
+      const query = `${title} ${ep}`.trim()
+      try {
+        const results = await this.search(query)
+        const valid = results.filter(r => r.type !== 'batch')
+        if (valid.length > 0) {
+          allResults = allResults.concat(valid)
+          break
+        }
+      } catch (err) {
+        continue
+      }
+    }
+    
+    if (allResults.length === 0) {
+      for (const title of titles) {
+        try {
+          const results = await this.search(`${title} batch`)
+          if (results.length > 0) {
+            allResults = allResults.concat(results.filter(r => r.type === 'batch'))
+            break
+          }
+        } catch (err) {
+          continue
+        }
+      }
+    }
+    
+    return allResults
+  },
+
+  async movie(options) {
+    const titles = (options.titles || []).slice(0, 3)
+    for (const title of titles) {
+      try {
+        const results = await this.search(title)
+        if (results.length > 0) return results
+      } catch (err) {
+        continue
+      }
+    }
+    return []
+  },
+
+  async series(options) {
+    return this.anime(options)
+  }
+}

@@ -207,5 +207,96 @@
       }
     ],
     "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/btdigg.js"
+  },
+  {
+    "id": "nekobt",
+    "name": "NekoBT",
+    "version": "1.0.0",
+    "type": "torrent",
+    "contentTypes": [
+      "anime",
+      "movie"
+    ],
+    "speed": "fast",
+    "accuracy": "high",
+    "description": "High quality, highly accurate torrent indexer specifically for anime",
+    "settings": [],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/nekobt.js"
+  },
+  {
+    "id": "seadex",
+    "name": "SeaDex",
+    "version": "1.0.0",
+    "type": "torrent",
+    "contentTypes": [
+      "anime",
+      "movie"
+    ],
+    "speed": "fast",
+    "accuracy": "high",
+    "description": "SeaDex anime indexer. Returns best releases based on Anilist mapping.",
+    "settings": [],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/seadex.js"
+  },
+  {
+    "id": "animetosho",
+    "name": "AnimeTosho (Old)",
+    "version": "1.0.0",
+    "type": "torrent",
+    "contentTypes": [
+      "anime",
+      "movie"
+    ],
+    "speed": "moderate",
+    "accuracy": "medium",
+    "description": "AnimeTosho legacy tracker search.",
+    "settings": [
+      {
+        "key": "useTorrent",
+        "label": "Use .torrent files",
+        "type": "toggle",
+        "default": false,
+        "description": "Use .torrent files instead of magnet links. May help if ISPs block DHT."
+      }
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/animetosho.js"
+  },
+  {
+    "id": "animetoshonew",
+    "name": "AnimeTosho (New)",
+    "version": "1.0.0",
+    "type": "torrent",
+    "contentTypes": [
+      "anime",
+      "movie"
+    ],
+    "speed": "fast",
+    "accuracy": "medium",
+    "description": "AnimeTosho modernized API search.",
+    "settings": [
+      {
+        "key": "useTorrent",
+        "label": "Use .torrent files",
+        "type": "toggle",
+        "default": false,
+        "description": "Use .torrent files instead of magnet links. May help if ISPs block DHT."
+      }
+    ],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/animetoshonew.js"
+  },
+  {
+    "id": "anisearch",
+    "name": "AniSearch",
+    "version": "1.0.0",
+    "type": "torrent",
+    "contentTypes": [
+      "anime",
+      "movie"
+    ],
+    "speed": "moderate",
+    "accuracy": "medium",
+    "description": "AniSearch string-based torrent query tool.",
+    "settings": [],
+    "code": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/sources/anisearch.js"
   }
 ]

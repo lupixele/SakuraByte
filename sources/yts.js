@@ -1,5 +1,5 @@
 export async function movie(query, options = {}) {
-  const domain = options.settings?.domain || 'yts.mx'
+  const domain = options.settings?.domain || 'yts.rs'
   const searchUrl = `https://${domain}/api/v2/list_movies.json?query_term=${encodeURIComponent(query.titles[0])}`
   
   try {

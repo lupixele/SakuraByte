@@ -38,5 +38,29 @@
     "description": "Scrapes Torrentio Stremio Addon",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/torrentio.js",
     "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "nekobt",
+    "name": "NekoBT",
+    "version": "1.0.0",
+    "description": "Scrapes NekoBT for High Quality Anime Torrents",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/nekobt.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "anisearch",
+    "name": "AniSearch",
+    "version": "1.0.0",
+    "description": "Scrapes AniSearch for Anime Torrents",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/anisearch.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "animetosho",
+    "name": "AnimeTosho",
+    "version": "1.0.0",
+    "description": "Scrapes AnimeTosho for Anime Torrents",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/animetosho.js",
+    "update": "gh:lupixele/SakuraByte"
   }
 ]

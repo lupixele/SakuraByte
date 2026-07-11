@@ -30,5 +30,13 @@
     "description": "Scrapes Nyaa.si for Anime Magnet Links",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/nyaa.js",
     "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "torrentio",
+    "name": "Torrentio",
+    "version": "1.0.2",
+    "description": "Scrapes Torrentio Stremio Addon",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/torrentio.js",
+    "update": "gh:lupixele/SakuraByte"
   }
 ]

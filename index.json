@@ -34,7 +34,7 @@
   {
     "id": "torrentio",
     "name": "Torrentio",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Scrapes Torrentio Stremio Addon",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/torrentio.js",
     "update": "gh:lupixele/SakuraByte"

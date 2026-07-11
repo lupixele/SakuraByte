@@ -63,17 +63,6 @@ async function searchSources(q) {
        fileName = lines[0];
     }
 
-    const trackers = [
-      "udp://tracker.opentrackr.org:1337/announce",
-      "udp://open.demonii.com:1337/announce",
-      "udp://tracker.openbittorrent.com:80",
-      "udp://tracker.coppersurfer.tk:6969",
-      "udp://glotorrents.pw:6969/announce",
-      "udp://tracker.leechers-paradise.org:6969",
-      "udp://p4p.arenabg.com:1337"
-    ];
-    const trString = trackers.map(tr => "&tr=" + encodeURIComponent(tr)).join("");
-
     return {
       id: "torrentio_" + s.infoHash,
       sourceName: "Torrentio",
@@ -82,7 +71,7 @@ async function searchSources(q) {
       quality: quality,
       size: size,
       seeds: seeders,
-      hash: "magnet:?xt=urn:btih:" + s.infoHash + trString,
+      hash: s.infoHash,
       fileIdx: s.fileIdx
     };
   });

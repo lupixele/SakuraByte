@@ -2,7 +2,7 @@
   {
     "id": "vidlink",
     "name": "VidLink",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Scrapes Vidlink.pro for 4K/1080p HTTP streams",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/vidlink.js",
     "update": "gh:lupixele/SakuraByte"
@@ -26,7 +26,7 @@
   {
     "id": "vidsrc",
     "name": "Vidsrc",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Scrapes Vidsrc.me for HTTP streams",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/vidsrc.js",
     "update": "gh:lupixele/SakuraByte"
@@ -42,7 +42,7 @@
   {
     "id": "nyaa",
     "name": "Nyaa",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Scrapes Nyaa.si for Anime Magnet Links",
     "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/nyaa.js",
     "update": "gh:lupixele/SakuraByte"

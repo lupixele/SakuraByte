@@ -22,8 +22,8 @@
   
   // Construct Vidlink embed link (One of the most reliable Multi-servers on FMHY)
   const embedUrl = type === "movie" 
-    ? `https://vidlink.pro/movie/${imdbId}`
-    : `https://vidlink.pro/tv/${imdbId}/${season}/${episode}`;
+    ? `https://vidlink.online/movie/${imdbId}`
+    : `https://vidlink.online/tv/${imdbId}/${season}/${episode}`;
 
   console.log('[Vidlink] Extracting from Embed:', embedUrl);
 

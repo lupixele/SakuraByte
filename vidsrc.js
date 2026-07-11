@@ -22,8 +22,8 @@
   
   // Construct Vidsrc embed link
   const embedUrl = type === "movie" 
-    ? `https://vidsrc.me/embed/movie?imdb=${imdbId}`
-    : `https://vidsrc.me/embed/tv?imdb=${imdbId}&season=${season}&episode=${episode}`;
+    ? `https://vidsrc.in/embed/movie?imdb=${imdbId}`
+    : `https://vidsrc.in/embed/tv?imdb=${imdbId}&season=${season}&episode=${episode}`;
 
   console.log('Extracting from Vidsrc:', embedUrl);
 

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "nyaa",
+    "name": "Nyaa.si",
+    "version": "1.0.0",
+    "code": "file:///P:/Projects/SakuraByte/nyaa.js",
+    "contentTypes": ["anime"]
+  },
+  {
+    "id": "torrentio",
+    "name": "Torrentio",
+    "version": "1.0.0",
+    "code": "file:///P:/Projects/SakuraByte/torrentio.js",
+    "contentTypes": ["movie", "series", "anime"]
+  },
+  {
+    "id": "vidsrc",
+    "name": "VidSrc",
+    "version": "1.0.0",
+    "code": "file:///P:/Projects/SakuraByte/vidsrc.js",
+    "contentTypes": ["movie", "series", "anime"]
+  },
+  {
+    "id": "autoembed",
+    "name": "AutoEmbed",
+    "version": "1.0.0",
+    "code": "file:///P:/Projects/SakuraByte/autoembed.js",
+    "contentTypes": ["movie", "series", "anime"]
+  }
+]

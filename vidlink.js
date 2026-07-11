@@ -12,7 +12,7 @@
     episode = parseInt(seMatch[3], 10);
   }
 
-  // Find IMDb ID using Cinemeta
+  // Find TMDB/IMDb ID using Cinemeta
   const cinemetaUrl = `https://v3-cinemeta.strem.io/catalog/${type}/top/search=${encodeURIComponent(searchName)}.json`;
   const cmRes = await fetch(cinemetaUrl);
   const cmData = await cmRes.json();
@@ -20,12 +20,12 @@
   if (!cmData.metas || cmData.metas.length === 0) return [];
   const imdbId = cmData.metas[0].imdb_id;
   
-  // Construct Autoembed embed link
+  // Construct Vidlink embed link (One of the most reliable Multi-servers on FMHY)
   const embedUrl = type === "movie" 
-    ? `https://player.autoembed.cc/embed/movie/${imdbId}`
-    : `https://player.autoembed.cc/embed/tv/${imdbId}/${season}/${episode}`;
+    ? `https://vidlink.pro/movie/${imdbId}`
+    : `https://vidlink.pro/tv/${imdbId}/${season}/${episode}`;
 
-  console.log('[Autoembed] Extracting from Embed:', embedUrl);
+  console.log('[Vidlink] Extracting from Embed:', embedUrl);
 
   let directM3U8 = null;
   if (window && window.Native && window.Native.extensions && window.Native.extensions.extractM3U8) {
@@ -33,15 +33,15 @@
   }
   
   if (!directM3U8) {
-     console.log('[Autoembed] Failed to extract direct M3U8.');
+     console.log('[Vidlink] Failed to extract direct M3U8. Site might be heavily loaded or blocking Chromium.');
      return [];
   }
 
   return [
     {
-      id: "autoembed_" + imdbId,
-      name: searchName + " (Autoembed Host)",
-      sourceName: "Autoembed", 
+      id: "vidlink_" + imdbId,
+      name: searchName + " (VidLink HD)",
+      sourceName: "VidLink", 
       type: "stream",
       quality: "Auto",
       url: directM3U8

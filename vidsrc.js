@@ -1,4 +1,4 @@
-async function searchSources(q) {
+﻿async function searchSources(q) {
   let type = "movie";
   let searchName = q;
   let season = 1;
@@ -20,21 +20,27 @@ async function searchSources(q) {
   if (!cmData.metas || cmData.metas.length === 0) return [];
   const imdbId = cmData.metas[0].imdb_id;
   
-  // This is a simplified extraction for vidsrc
-  const url = type === "movie" 
-    ? `https://vidsrc.me/embed/movie?imdb=${imdbId}`
-    : `https://vidsrc.me/embed/tv?imdb=${imdbId}&season=${season}&episode=${episode}`;
-
-  // In a full production scraper, you would fetch this URL, find the iframe, 
-  // extract the rcp parameter, and decode it. Since we are in a sandbox without DOM execution,
-  // we will return a standard result.
+  // NOTE: Vidsrc heavily obfuscates its direct links and requires a headless browser scraper. 
+  // To demonstrate Kureha's native PlayerUI handling non-magnet Web Streams with qualities and subtitles,
+  // we return a mock direct stream payload below.
+  
   return [
     {
       id: "vidsrc_" + imdbId,
-      name: searchName,
-      sourceName: "Vidsrc", type: "stream",
+      name: searchName + " (Mock Stream)",
+      sourceName: "Vidsrc", 
+      type: "stream",
       quality: "1080p",
-      url: url, // In a real scenario, this would be the decrypted .m3u8 link. The Kureha UI will open this in an iframe fallback if it's an HTML page.
+      url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+      qualities: {
+        "1080p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        "720p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        "480p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+      },
+      subtitles: [
+        { language: "English", url: "https://raw.githubusercontent.com/andreyvit/subtitle-tools/master/sample.srt" },
+        { language: "Spanish", url: "https://raw.githubusercontent.com/andreyvit/subtitle-tools/master/sample.srt" }
+      ]
     }
   ];
 }

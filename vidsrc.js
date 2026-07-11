@@ -20,27 +20,32 @@
   if (!cmData.metas || cmData.metas.length === 0) return [];
   const imdbId = cmData.metas[0].imdb_id;
   
-  // NOTE: Vidsrc heavily obfuscates its direct links and requires a headless browser scraper. 
-  // To demonstrate Kureha's native PlayerUI handling non-magnet Web Streams with qualities and subtitles,
-  // we return a mock direct stream payload below.
+  // Construct Vidsrc embed link
+  const embedUrl = type === "movie" 
+    ? `https://vidsrc.me/embed/movie?imdb=${imdbId}`
+    : `https://vidsrc.me/embed/tv?imdb=${imdbId}&season=${season}&episode=${episode}`;
+
+  console.log('Extracting from Vidsrc:', embedUrl);
+
+  // Ask Kureha's Main Process to do a headless extraction of the .m3u8 link from the embed
+  let directM3U8 = null;
+  if (window && window.Native && window.Native.extensions && window.Native.extensions.extractM3U8) {
+     directM3U8 = await window.Native.extensions.extractM3U8(embedUrl);
+  }
   
+  if (!directM3U8) {
+     console.log('Failed to extract direct M3U8 from vidsrc');
+     return [];
+  }
+
   return [
     {
       id: "vidsrc_" + imdbId,
-      name: searchName + " (Mock Stream)",
+      name: searchName + " (Direct Stream)",
       sourceName: "Vidsrc", 
       type: "stream",
       quality: "1080p",
-      url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-      qualities: {
-        "1080p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-        "720p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-        "480p (Direct)": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-      },
-      subtitles: [
-        { language: "English", url: "https://raw.githubusercontent.com/andreyvit/subtitle-tools/master/sample.srt" },
-        { language: "Spanish", url: "https://raw.githubusercontent.com/andreyvit/subtitle-tools/master/sample.srt" }
-      ]
+      url: directM3U8
     }
   ];
 }

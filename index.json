@@ -1,30 +1,50 @@
-[
+﻿[
   {
-    "id": "nyaa",
-    "name": "Nyaa.si",
+    "id": "vidlink",
+    "name": "VidLink",
     "version": "1.0.0",
-    "code": "file:///P:/Projects/SakuraByte/nyaa.js",
-    "contentTypes": ["anime"]
-  },
-  {
-    "id": "torrentio",
-    "name": "Torrentio",
-    "version": "1.0.0",
-    "code": "file:///P:/Projects/SakuraByte/torrentio.js",
-    "contentTypes": ["movie", "series", "anime"]
-  },
-  {
-    "id": "vidsrc",
-    "name": "VidSrc",
-    "version": "1.0.0",
-    "code": "file:///P:/Projects/SakuraByte/vidsrc.js",
-    "contentTypes": ["movie", "series", "anime"]
+    "description": "Scrapes Vidlink.pro for 4K/1080p HTTP streams",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/vidlink.js",
+    "update": "gh:lupixele/SakuraByte"
   },
   {
     "id": "autoembed",
     "name": "AutoEmbed",
     "version": "1.0.0",
-    "code": "file:///P:/Projects/SakuraByte/autoembed.js",
-    "contentTypes": ["movie", "series", "anime"]
+    "description": "Scrapes Autoembed for HTTP streams",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/autoembed.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "superflix",
+    "name": "Superflix",
+    "version": "1.0.0",
+    "description": "Uses Stremio Superflix Addon for direct HTTP streams",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/superflix.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "vidsrc",
+    "name": "Vidsrc",
+    "version": "1.0.0",
+    "description": "Scrapes Vidsrc.me for HTTP streams",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/vidsrc.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "torrentio",
+    "name": "Torrentio",
+    "version": "1.0.0",
+    "description": "Scrapes Torrentio for Magnet Links",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/torrentio.js",
+    "update": "gh:lupixele/SakuraByte"
+  },
+  {
+    "id": "nyaa",
+    "name": "Nyaa",
+    "version": "1.0.0",
+    "description": "Scrapes Nyaa.si for Anime Magnet Links",
+    "main": "https://raw.githubusercontent.com/lupixele/SakuraByte/main/nyaa.js",
+    "update": "gh:lupixele/SakuraByte"
   }
 ]

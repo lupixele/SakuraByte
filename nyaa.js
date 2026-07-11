@@ -1,5 +1,5 @@
 async function searchSources(q) {
-  const url = 'https://nyaa.iss.one/?page=rss&q=' + encodeURIComponent(q) + '&c=1_2&f=0';
+  const url = 'https://nyaa.si/?page=rss&q=' + encodeURIComponent(q) + '&c=1_2&f=0';
   const res = await fetch(url);
   const xml = await res.text();
   
